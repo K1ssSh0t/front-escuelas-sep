@@ -17,8 +17,6 @@ import {
   TableBody,
   TableCell,
 } from "@/components/ui/table";
-import { AgregarEscuelas } from "@/components/agregarEscuela";
-import { AcualizarEscuela } from "@/components/actualizarEscuela";
 
 function ListaPreguntas() {
   const a = client.authStore.isAdmin;
@@ -45,40 +43,41 @@ function ListaPreguntas() {
   }, []);
 
   return (
-    <div className="flex min-h-[100dvh] items-center justify-center bg-background px-4 py-12 sm:px-6 lg:px-8">
-      <Card>
-        <CardHeader className="flex items-center justify-between">
-          <div>
-            <CardTitle>Preguntas</CardTitle>
-            <CardDescription>
-              Gestiona los datos de las escuelas registradas.
-            </CardDescription>
-          </div>
-          <AgregarEscuelas />
-        </CardHeader>
-        <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Username</TableHead>
-                <TableHead>Nombre Completo</TableHead>
-                <TableHead>Código de Centro</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {preguntas?.map((item: any) => {
-                return (
-                  <TableRow key={item.id}>
-                    <TableCell className="font-medium">{item.tes1}</TableCell>
-                    <TableCell>{JSON.stringify(item.test2)}</TableCell>
-                    <TableCell>{item.expand?.escuela?.username}</TableCell>
-                  </TableRow>
-                );
-              })}
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
+    <div className="container mx-auto my-8">
+      <div className="flex items-center justify-center bg-background px-4 py-12 sm:px-6 lg:px-8">
+        <Card>
+          <CardHeader className="flex items-center justify-between">
+            <div>
+              <CardTitle>Preguntas</CardTitle>
+              <CardDescription>
+                Gestiona los datos de las escuelas registradas.
+              </CardDescription>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Username</TableHead>
+                  <TableHead>Nombre Completo</TableHead>
+                  <TableHead>Código de Centro</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {preguntas?.map((item: any) => {
+                  return (
+                    <TableRow key={item.id}>
+                      <TableCell className="font-medium">{item.tes1}</TableCell>
+                      <TableCell>{JSON.stringify(item.test2)}</TableCell>
+                      <TableCell>{item.expand?.escuela?.username}</TableCell>
+                    </TableRow>
+                  );
+                })}
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }

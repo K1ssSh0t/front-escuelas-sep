@@ -9,8 +9,9 @@ import { Preguntas } from "./routes/Preguntas.tsx";
 import { ThemeProvider } from "./components/theme-provider.tsx";
 import Usuarios from "./routes/Usuarios.tsx";
 import { AdminLogin } from "./routes/AdminLogin.tsx";
-import path from "path";
+
 import ListaPreguntas from "./routes/listaDePreguntas.tsx";
+import Dashboard from "./routes/dashboard.tsx";
 
 const router = createBrowserRouter([
   {
@@ -32,12 +33,17 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Usuarios />,
-    children: [],
-  },
-  {
-    path: "lista_preguntas",
-    element: <ListaPreguntas />,
+    element: <Dashboard />,
+    children: [
+      {
+        path: "lista_preguntas",
+        element: <ListaPreguntas />,
+      },
+      {
+        path: "lista_usuarios",
+        element: <Usuarios />,
+      },
+    ],
   },
 ]);
 
