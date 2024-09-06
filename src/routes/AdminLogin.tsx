@@ -48,7 +48,7 @@ export function AdminLogin() {
     console.log(values);
     try {
       await client.admins.authWithPassword(values.username, values.password);
-      navigate("/dashboard");
+      navigate("/dashboard/lista_usuarios");
     } catch (error) {
       console.log(error);
     } finally {

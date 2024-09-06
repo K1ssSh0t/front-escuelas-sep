@@ -1,6 +1,6 @@
 import { client } from "@/lib/pocketbase";
 import { useEffect } from "react";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
 
@@ -32,9 +32,35 @@ function Dashboard() {
             >
               Cerrar Sesion
             </Button>
-            <Link to={"lista_preguntas"}>Lista de Preguntas</Link>
+
+            <NavLink
+              to={"lista_preguntas"}
+              className={({ isActive, isPending }) =>
+                isPending
+                  ? "pending"
+                  : isActive
+                  ? "underline text-blue-600"
+                  : ""
+              }
+            >
+              Lista de Preguntas
+            </NavLink>
+
             <pre>|</pre>
-            <Link to={"lista_usuarios"}>Lista de Usuarios</Link>
+
+            <NavLink
+              to={"lista_usuarios"}
+              className={({ isActive, isPending }) =>
+                isPending
+                  ? "pending"
+                  : isActive
+                  ? " underline text-blue-600"
+                  : ""
+              }
+            >
+              Lista de Usuarios
+            </NavLink>
+
             <ModeToggle></ModeToggle>
           </div>
         </div>

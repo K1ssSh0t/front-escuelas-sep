@@ -17,6 +17,7 @@ import {
   TableBody,
   TableCell,
 } from "@/components/ui/table";
+import { ExportCSV } from "@/components/botonDeDescarga";
 
 function ListaPreguntas() {
   const a = client.authStore.isAdmin;
@@ -53,6 +54,7 @@ function ListaPreguntas() {
                 Gestiona los datos de las escuelas registradas.
               </CardDescription>
             </div>
+            <ExportCSV data={preguntas} />
           </CardHeader>
           <CardContent>
             <Table>
